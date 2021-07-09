@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>solution-code-hibernate-hb-01-map-collections-set</module>
+        <module>solution-code-hibernate-hb-02-map-collections-list</module>
     </modules>
 
     <dependencyManagement>
