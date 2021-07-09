@@ -11,6 +11,7 @@
     <modules>
         <module>solution-code-hibernate-hb-01-map-collections-set</module>
         <module>solution-code-hibernate-hb-02-map-collections-list</module>
+        <module>solution-code-hibernate-hb-03-map-collections-map</module>
     </modules>
 
     <dependencyManagement>
