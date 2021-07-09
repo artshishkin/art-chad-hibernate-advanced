@@ -26,15 +26,18 @@ public class CreateStudentImagesListDemo {
              Session session = factory.getCurrentSession()) {
 
             // create the object
-            Student student = new Student("Art", "Shyshkin", "art@example.com");
-            student.getImages().addAll(List.of("image01.jpg", "image02.jpg", "image03.jpg", "image04.jpg", "image04.jpg"));
+            Student student1 = new Student("Art", "Shyshkin", "art@example.com");
+            student1.getImages().addAll(List.of("image01.jpg", "image02.jpg", "image03.jpg", "image04.jpg", "image04.jpg"));
+            Student student2 = new Student("Kate", "Shyshkina", "kate@example.com");
+            student2.getImages().addAll(List.of("image11.jpg", "image12.jpg", "image13.jpg", "image14.jpg", "image14.jpg"));
 
             // start a transaction
             transaction = session.beginTransaction();
 
             // save the object
-            System.out.println("Saving the student and images");
-            session.persist(student);
+            System.out.println("Saving the students and images");
+            session.persist(student1);
+            session.persist(student2);
 
             // commit the transaction
             transaction.commit();
