@@ -1,7 +1,9 @@
 package net.shyshkin.study.hibernate.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -18,6 +20,11 @@ public class Student {
     private String lastName;
 
     private String email;
+
+    @ElementCollection
+    @CollectionTable(name = "image", joinColumns = @JoinColumn(name = "student_id"))
+    @Column(name = "file_name")
+    private Set<String> images = new HashSet<>();
 
     public Student() {
     }
@@ -58,6 +65,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<String> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<String> images) {
+        this.images = images;
     }
 
     @Override
