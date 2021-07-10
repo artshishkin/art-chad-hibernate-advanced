@@ -65,4 +65,36 @@ public class CreateStudentImagesSortedSetDemoTest {
 
         assertThat(studentId).isNotNull();
     }
+
+    @Test
+    @Order(2)
+    void retrieveStudent() {
+
+        Student student;
+
+        // create session factory
+        // create session
+        try (SessionFactory factory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Student.class)
+                .buildSessionFactory();
+             Session session = factory.getCurrentSession()) {
+
+            session.beginTransaction();
+
+            System.out.println("Getting student by Id: " + studentId);
+            student = session.get(Student.class, studentId);
+
+            studentId = student.getId();
+            System.out.println("Student: " + student);
+            System.out.println("Images: " + student.getImages());
+
+            // commit the transaction
+            session.getTransaction().commit();
+
+        }
+        assertThat(student.getImages())
+                .hasSize(4)
+                .containsSequence("image04.jpg", "image03.jpg", "image02.jpg", "image01.jpg");
+    }
 }

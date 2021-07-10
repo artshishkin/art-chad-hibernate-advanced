@@ -24,8 +24,8 @@ public class Student {
     @ElementCollection
     @CollectionTable(name = "image", joinColumns = @JoinColumn(name = "student_id"))
     @Column(name = "file_name")
-//    @OrderBy("file_name DESC") //JPA
-    @org.hibernate.annotations.OrderBy(clause = "file_name DESC") //hibernate
+    @OrderBy("file_name DESC") //JPA
+//    @org.hibernate.annotations.OrderBy(clause = "file_name DESC") //hibernate
     private Set<String> images = new LinkedHashSet<>();
 
     public Student() {
