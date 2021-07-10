@@ -13,6 +13,7 @@
         <module>solution-code-hibernate-hb-02-map-collections-list</module>
         <module>solution-code-hibernate-hb-03-map-collections-map</module>
         <module>solution-code-hibernate-hb-04-map-collections-sortedset</module>
+        <module>solution-code-hibernate-hb-05-map-collections-sortedmap</module>
     </modules>
 
     <properties>
