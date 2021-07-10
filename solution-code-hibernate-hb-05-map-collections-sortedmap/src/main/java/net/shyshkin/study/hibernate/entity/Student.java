@@ -1,10 +1,9 @@
 package net.shyshkin.study.hibernate.entity;
 
+import org.hibernate.annotations.SortComparator;
+
 import javax.persistence.*;
-import java.util.Map;
-import java.util.Objects;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 
 @Entity(name = "student")
 @Table(name = "student")
@@ -27,9 +26,9 @@ public class Student {
     @MapKeyColumn(name = "file_name")
     @Column(name = "image_description")
 //    @OrderBy //select ... order by image_description asc
-    @OrderBy("file_name") //select ... order by file_name asc
+//    @OrderBy("file_name") //select ... order by file_name asc
+    @SortComparator(ReverseStringComparator.class)
     private SortedMap<String, String> images = new TreeMap<>(); //will be replaced with PersistentSortedMap when retrieving
-//    private Map<String, String> images = new TreeMap<>(); //will be replaced with PersistentMap when retrieving
 
     public Student() {
     }
@@ -102,4 +101,15 @@ public class Student {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public static class ReverseStringComparator implements Comparator<String> {
+
+        @Override
+        public int compare(String o1, String o2) {
+            String o1Reversed = new StringBuilder(o1).reverse().toString();
+            String o2Reversed = new StringBuilder(o2).reverse().toString();
+            return o1Reversed.compareTo(o2Reversed);
+        }
+    }
+
 }

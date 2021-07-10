@@ -43,10 +43,14 @@ public class CreateStudentImagesSortedMapDemoTest {
                     FAKER.bothify("????##@gmail.com"));
 
             student.getImages().putAll(Map.of(
+                    "image01.jpg", "Image 01 Description",
+                    "image01.bmp", "Image 01 BMP Description",
+                    "image01.png", "Image 01 PNG Description",
                     "image02.jpg", "Image 02 Description",
                     "image03.jpg", "Image 03 Description",
-                    "image04.jpg", "Image 04 Description",
-                    "image01.jpg", "Image 01 Description")
+                    "image03.png", "Image 03 PNG Description",
+                    "image04.jpg", "Image 04 Description"
+                    )
             );
 
             // start a transaction
@@ -64,6 +68,7 @@ public class CreateStudentImagesSortedMapDemoTest {
             transaction.commit();
 
         } catch (Exception exception) {
+            exception.printStackTrace();
             // clean up code
             if (transaction != null) transaction.rollback();
         }
@@ -101,6 +106,7 @@ public class CreateStudentImagesSortedMapDemoTest {
             transaction.commit();
 
         } catch (Exception exception) {
+            exception.printStackTrace();
             // clean up code
             if (transaction != null) transaction.rollback();
         }
@@ -108,8 +114,12 @@ public class CreateStudentImagesSortedMapDemoTest {
         assertThat(student)
                 .isNotNull()
                 .satisfies(st -> assertThat(st.getImages().keySet())
-                        .hasSize(4)
-                        .containsSequence("image01.jpg", "image02.jpg", "image03.jpg", "image04.jpg"));
+                        .hasSize(7)
+                        .containsSequence(
+                                "image01.png", "image03.png",
+                                "image01.jpg", "image02.jpg", "image03.jpg", "image04.jpg",
+                                "image01.bmp"
+                        ));
         System.out.println("Class of `images` property: " + student.getImages().getClass());
     }
 }
