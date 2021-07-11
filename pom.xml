@@ -14,6 +14,7 @@
         <module>solution-code-hibernate-hb-03-map-collections-map</module>
         <module>solution-code-hibernate-hb-04-map-collections-sortedset</module>
         <module>solution-code-hibernate-hb-05-map-collections-sortedmap</module>
+        <module>solution-code-hibernate-hb-06-map-components</module>
     </modules>
 
     <properties>
