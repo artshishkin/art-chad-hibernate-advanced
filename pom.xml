@@ -15,6 +15,7 @@
         <module>solution-code-hibernate-hb-04-map-collections-sortedset</module>
         <module>solution-code-hibernate-hb-05-map-collections-sortedmap</module>
         <module>solution-code-hibernate-hb-06-map-components</module>
+        <module>solution-code-hibernate-hb-07-map-enum</module>
     </modules>
 
     <properties>
