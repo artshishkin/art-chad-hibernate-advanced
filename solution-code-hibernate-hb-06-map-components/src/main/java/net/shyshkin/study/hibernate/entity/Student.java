@@ -22,6 +22,14 @@ public class Student {
     @Embedded
     private Address homeAddress;
 
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "street", column = @Column(name = "billing_street")),
+            @AttributeOverride(name = "city", column = @Column(name = "billing_city")),
+            @AttributeOverride(name = "zipcode", column = @Column(name = "billing_zipcode"))
+    })
+    private Address billingAddress;
+
     public Student() {
     }
 
@@ -71,6 +79,14 @@ public class Student {
         this.homeAddress = homeAddress;
     }
 
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -92,6 +108,7 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", homeAddress=" + homeAddress +
+                ", billingAddress=" + billingAddress +
                 '}';
     }
 }

@@ -21,7 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CreateStudentAddressDemoTest {
 
     private static final Faker FAKER = Faker.instance(Locale.US);
-    private static Address savedAddress;
+    private static Address savedHomeAddress;
+    private static Address savedBillingAddress;
     private static Long studentId = null;
 
     @Test
@@ -40,12 +41,20 @@ public class CreateStudentAddressDemoTest {
 
             // create the object
             Student student = new Student("Art", "Shyshkin", "art@example.com");
-            savedAddress = new Address(
+            savedHomeAddress = new Address(
                     FAKER.address().streetAddress(),
                     FAKER.address().city(),
                     FAKER.address().zipCode()
             );
-            student.setHomeAddress(savedAddress);
+
+            savedBillingAddress = new Address(
+                    FAKER.address().streetAddress(),
+                    FAKER.address().city(),
+                    FAKER.address().zipCode()
+            );
+
+            student.setHomeAddress(savedHomeAddress);
+            student.setBillingAddress(savedBillingAddress);
 
             // start a transaction
             transaction = session.beginTransaction();
@@ -64,6 +73,7 @@ public class CreateStudentAddressDemoTest {
             // clean up code
             if (transaction != null) transaction.rollback();
         }
+        assertThat(studentId).isNotNull();
     }
 
     @Test
@@ -102,6 +112,7 @@ public class CreateStudentAddressDemoTest {
         assertThat(student)
                 .isNotNull()
                 .hasNoNullFieldsOrProperties()
-                .satisfies(st -> assertThat(st.getHomeAddress()).isEqualTo(savedAddress));
+                .satisfies(st -> assertThat(st.getHomeAddress()).isEqualTo(savedHomeAddress))
+                .satisfies(st -> assertThat(st.getBillingAddress()).isEqualTo(savedBillingAddress));
     }
 }
