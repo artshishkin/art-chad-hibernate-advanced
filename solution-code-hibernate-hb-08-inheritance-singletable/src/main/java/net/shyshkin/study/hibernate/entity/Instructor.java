@@ -1,8 +1,10 @@
 package net.shyshkin.study.hibernate.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("INSTRUCTOR")
 public class Instructor extends User {
 
     private Double salary;
