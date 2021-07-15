@@ -16,6 +16,7 @@
         <module>solution-code-hibernate-hb-05-map-collections-sortedmap</module>
         <module>solution-code-hibernate-hb-06-map-components</module>
         <module>solution-code-hibernate-hb-07-map-enum</module>
+        <module>solution-code-hibernate-hb-08-inheritance-singletable</module>
     </modules>
 
     <properties>
