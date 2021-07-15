@@ -18,6 +18,7 @@
         <module>solution-code-hibernate-hb-07-map-enum</module>
         <module>solution-code-hibernate-hb-08-inheritance-singletable</module>
         <module>solution-code-hibernate-hb-09-inheritance-tableperclass</module>
+        <module>solution-code-hibernate-hb-10-inheritance-joinedtable</module>
     </modules>
 
     <properties>
